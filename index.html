@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Greenhash Energy entwickelt intelligente Energielösungen für eine dezentrale Zukunft – mit erneuerbaren Energien, digitaler Infrastruktur und flexibel steuerbaren Verbrauchern.">
+  <meta name="theme-color" content="#07110d">
+  <title>Greenhash Energy GbR – Intelligente Energielösungen</title>
+  <style>
+    :root {
+      --bg: #07110d;
+      --bg-soft: #0b1912;
+      --surface: #10241a;
+      --surface-2: #142d20;
+      --line: rgba(111, 255, 154, 0.18);
+      --green: #53ed43;
+      --green-dark: #17b93f;
+      --mint: #b7ffc0;
+      --text: #f4f8f5;
+      --muted: #b6c5bb;
+      --shadow: 0 22px 70px rgba(0, 0, 0, 0.34);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 14% 2%, rgba(63, 227, 71, 0.16), transparent 28rem),
+        radial-gradient(circle at 94% 24%, rgba(0, 170, 74, 0.10), transparent 24rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+    img { max-width: 100%; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -4rem;
+      z-index: 100;
+      padding: .7rem 1rem;
+      border-radius: 10px;
+      background: var(--text);
+      color: var(--bg);
+      font-weight: 750;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .container {
+      width: min(1120px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      background: rgba(7, 17, 13, .88);
+      backdrop-filter: blur(14px);
+    }
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      display: block;
+      object-fit: contain;
+      flex: 0 0 auto;
+      filter: drop-shadow(0 5px 10px rgba(0,0,0,.24));
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--text); }
+
+    .hero {
+      padding: clamp(4.8rem, 9vw, 8rem) 0 4rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: clamp(2rem, 6vw, 5.2rem);
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      margin: 0 0 1.2rem;
+      padding: .42rem .75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(83,237,67,.07);
+      color: var(--mint);
+      font-size: .82rem;
+      font-weight: 780;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 18px var(--green);
+    }
+    h1, h2, h3 { margin-top: 0; line-height: 1.12; }
+    h1 {
+      max-width: 780px;
+      margin-bottom: 1.25rem;
+      font-size: clamp(2.65rem, 7vw, 5.55rem);
+      letter-spacing: -.055em;
+    }
+    .accent {
+      color: transparent;
+      background: linear-gradient(110deg, #d7ffd5 0%, var(--green) 42%, #00bb68 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .lead {
+      max-width: 720px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.24rem);
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+      margin-top: 2rem;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: .78rem 1.05rem;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 820;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary {
+      color: #07110d;
+      background: linear-gradient(135deg, var(--green), #0fc967);
+      box-shadow: 0 14px 34px rgba(41,210,77,.18);
+    }
+    .button-secondary {
+      border-color: rgba(255,255,255,.14);
+      background: rgba(255,255,255,.035);
+      color: var(--text);
+    }
+
+    .logo-card {
+      position: relative;
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+      padding: clamp(1.5rem, 4vw, 2.7rem);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.055), transparent 40%),
+        rgba(8, 26, 16, .88);
+      box-shadow: var(--shadow);
+    }
+    .logo-card::before,
+    .logo-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(3px);
+    }
+    .logo-card::before {
+      width: 260px;
+      height: 260px;
+      top: -130px;
+      right: -90px;
+      background: rgba(83,237,67,.16);
+    }
+    .logo-card::after {
+      width: 180px;
+      height: 180px;
+      left: -90px;
+      bottom: -90px;
+      background: rgba(0,169,87,.13);
+    }
+    .logo {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 400px);
+      height: auto;
+      filter: drop-shadow(0 18px 26px rgba(0,0,0,.28));
+    }
+    .status {
+      position: absolute;
+      z-index: 2;
+      left: 1.2rem;
+      right: 1.2rem;
+      bottom: 1.2rem;
+      padding: .85rem 1rem;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 14px;
+      background: rgba(4, 14, 9, .72);
+      color: var(--muted);
+      font-size: .88rem;
+      backdrop-filter: blur(8px);
+    }
+    .status strong { color: var(--text); }
+
+    .section { padding: 5rem 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 2rem;
+    }
+    .kicker {
+      margin: 0 0 .6rem;
+      color: var(--green);
+      font-size: .8rem;
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin-bottom: 0;
+      font-size: clamp(2rem, 4.5vw, 3.55rem);
+      letter-spacing: -.045em;
+    }
+    .section-intro {
+      max-width: 720px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .about-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--line);
+      box-shadow: var(--shadow);
+    }
+    .about-copy, .mission-card {
+      padding: clamp(1.5rem, 4vw, 2.7rem);
+      background: var(--surface);
+    }
+    .about-copy p { margin: 0 0 1rem; color: var(--muted); }
+    .about-copy p:last-child { margin-bottom: 0; }
+    .mission-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        linear-gradient(145deg, rgba(83,237,67,.10), transparent 55%),
+        var(--surface-2);
+    }
+    .quote {
+      margin: 0 0 2rem;
+      font-size: clamp(1.45rem, 3vw, 2.2rem);
+      line-height: 1.25;
+      letter-spacing: -.025em;
+      font-weight: 780;
+    }
+    .quote-mark { color: var(--green); }
+    .mission-label { color: var(--muted); font-size: .9rem; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .card {
+      min-height: 245px;
+      padding: 1.4rem;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      background: linear-gradient(160deg, rgba(255,255,255,.035), transparent 70%), var(--bg-soft);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(83,237,67,.35);
+    }
+    .number {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 1.25rem;
+      border-radius: 11px;
+      color: var(--mint);
+      background: rgba(83,237,67,.10);
+      font-weight: 850;
+    }
+    .card h3 { margin-bottom: .65rem; font-size: 1.12rem; }
+    .card p { margin: 0; color: var(--muted); font-size: .94rem; }
+
+    .future {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(120deg, rgba(83,237,67,.12), transparent 42%),
+        var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .future-inner {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 2.5rem;
+      padding: clamp(1.6rem, 4vw, 3rem);
+      align-items: center;
+    }
+    .future p { color: var(--muted); }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+      align-content: center;
+    }
+    .tag {
+      padding: .62rem .78rem;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 999px;
+      background: rgba(5,17,11,.55);
+      color: #d8e7dc;
+      font-size: .9rem;
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      padding: clamp(1.6rem, 4vw, 2.8rem);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(120deg, #10271b, #0b1912);
+      box-shadow: var(--shadow);
+    }
+    .contact-panel h2 { margin-bottom: .8rem; font-size: clamp(2rem, 4vw, 3rem); }
+    .contact-panel p { max-width: 740px; margin: 0; color: var(--muted); }
+
+    footer {
+      padding: 2.5rem 0 3.5rem;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-title { color: var(--text); font-weight: 800; }
+    .footer-grid p { margin: 0; }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      align-items: flex-end;
+    }
+    details {
+      width: min(100%, 650px);
+      margin-top: .7rem;
+      margin-left: auto;
+      text-align: left;
+    }
+    summary {
+      cursor: pointer;
+      color: var(--text);
+      font-weight: 700;
+    }
+    details p { margin-top: .65rem; }
+
+    :focus-visible {
+      outline: 3px solid rgba(83,237,67,.75);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .section-head,
+      .about-panel,
+      .future-inner,
+      .contact-panel,
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 4rem; }
+      .logo-card { min-height: 325px; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .footer-links { align-items: flex-start; }
+      details { margin-left: 0; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 1.2rem, 1120px); }
+      .site-header { position: static; }
+      .nav { min-height: 64px; }
+      .nav-links a:not(.nav-contact) { display: none; }
+      .brand-text { font-size: .94rem; }
+      h1 { font-size: clamp(2.55rem, 13vw, 4rem); }
+      .hero { padding: 3.5rem 0 2.5rem; }
+      .section { padding: 3.7rem 0; }
+      .cards { grid-template-columns: 1fr; }
+      .card { min-height: auto; }
+      .logo-card { min-height: 300px; }
+      .contact-panel { gap: 1.4rem; }
+      .contact-panel .button { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Greenhash Energy – Startseite">
+        <img class="brand-logo" src="data:image/webp;base64,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" alt="" aria-hidden="true">
+        <span class="brand-text">Greenhash Energy</span>
+      </a>
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="#ueber-uns">Über uns</a>
+        <a href="#ansatz">Unser Ansatz</a>
+        <a href="#perspektive">Perspektive</a>
+        <a class="nav-contact" href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inhalt">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Energy-Tech aus Nordfriesland · Projektstart 2027</p>
+          <h1>Energie intelligent nutzen. <span class="accent">Werte nachhaltig schaffen.</span></h1>
+          <p class="lead">Greenhash Energy entwickelt intelligente Energielösungen für eine dezentrale Zukunft. Wir verbinden erneuerbare Energien, digitale Technologien und flexibel steuerbare Verbraucher, um Überschüsse effizient zu nutzen und wirtschaftliche Potenziale zu erschließen.</p>
+          <div class="actions">
+            <a class="button button-primary" href="#ansatz">Unser Ansatz</a>
+            <a class="button button-secondary" href="mailto:jb@greenhashenergy.de">Kontakt aufnehmen</a>
+          </div>
+        </div>
+
+        <div class="logo-card" aria-label="Greenhash Energy Logo und Projektstatus">
+          <img class="logo" src="data:image/webp;base64,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" alt="Logo der Greenhash Energy GbR">
+          <div class="status"><strong>Projektstart: 2027</strong> Die operative Umsetzung ist bereits gestartet; diese Informationsseite befindet sich im Aufbau.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ueber-uns">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Über uns</p>
+            <h2>Zwei Perspektiven. Ein gemeinsames Ziel.</h2>
+          </div>
+          <p class="section-intro">Greenhash Energy GbR wurde von Helge Jannsen und Christoph Burk gegründet. Gemeinsam verbinden wir Praxiserfahrung, technisches Verständnis und Interesse an erneuerbaren Energien und digitalen Infrastrukturen.</p>
+        </div>
+
+        <div class="about-panel">
+          <div class="about-copy">
+            <p>Wir verfügen beide über einen beruflichen Hintergrund im Rettungsdienst und bringen unterschiedliche technische Erfahrungen ein. Helge ist seit rund 20 Jahren im Bereich der erneuerbaren Energien tätig und verfügt zudem über fundierte Kenntnisse im Bauwesen.</p>
+            <p>Christoph ist Anlagenmechaniker für Sanitär-, Heizungs- und Klimatechnik und befasst sich seit Jahren intensiv mit Krypto-Technologien, Automatisierung und der technischen Einbindung digitaler Verbraucher.</p>
+            <p>Unser Ziel ist es, Energieüberschüsse durch intelligente Laststeuerung sinnvoll und wirtschaftlich nutzbar zu machen – insbesondere vor dem Hintergrund sich wandelnder energiewirtschaftlicher Rahmenbedingungen.</p>
+          </div>
+          <div class="mission-card">
+            <p class="quote"><span class="quote-mark">„</span>Wir machen erneuerbare Energie wirtschaftlicher.<span class="quote-mark">“</span></p>
+            <p class="mission-label">Unsere Mission: Erzeugung, Steuerung und digitale Nutzung zu einem intelligenten Gesamtsystem verbinden.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ansatz">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Unser Ansatz</p>
+            <h2>Mining ist das Werkzeug – nicht der Zweck.</h2>
+          </div>
+          <p class="section-intro">Bitcoin-Mining dient zunächst als flexibel regelbare elektrische Last. Die Leistungsaufnahme moderner ASIC-Miner kann an verfügbare Erzeugung, Temperaturen und betriebliche Anforderungen angepasst werden.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="number">01</div>
+            <h3>Überschüsse nutzen</h3>
+            <p>Strom aus Photovoltaik, Wind und weiteren regenerativen Quellen wird dort eingesetzt, wo er andernfalls nicht oder nur eingeschränkt wirtschaftlich genutzt werden könnte.</p>
+          </article>
+          <article class="card">
+            <div class="number">02</div>
+            <h3>Lasten flexibel steuern</h3>
+            <p>Digitale Verbraucher werden abhängig von Erzeugung, Netzbezug und Betriebszuständen dynamisch hoch- oder heruntergeregelt.</p>
+          </article>
+          <article class="card">
+            <div class="number">03</div>
+            <h3>Automatisieren</h3>
+            <p>Intelligente Steuerungs- und Überwachungslösungen sollen Energieflüsse, Hardware und Umgebungsbedingungen zuverlässig zusammenführen.</p>
+          </article>
+          <article class="card">
+            <div class="number">04</div>
+            <h3>Wirkung erweitern</h3>
+            <p>Neben der digitalen Wertschöpfung betrachten wir auch die nutzbare Abwärme und die Einbindung in ganzheitliche Energiekonzepte.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="perspektive">
+      <div class="container future">
+        <div class="future-inner">
+          <div>
+            <p class="kicker">Perspektive</p>
+            <h2>Energy-Tech mit Entwicklungsspielraum.</h2>
+            <p>Bitcoin-Mining ist unser erstes konkretes Einsatzfeld. Langfristig denken wir Greenhash Energy breiter – als Schnittstelle zwischen Energiewirtschaft, Digitalisierung, Automatisierung und technischer Infrastruktur.</p>
+          </div>
+          <div class="tags" aria-label="Perspektivische Entwicklungsfelder">
+            <span class="tag">Intelligente Laststeuerung</span>
+            <span class="tag">Energiemanagement</span>
+            <span class="tag">PV-Optimierung</span>
+            <span class="tag">Batteriespeicher</span>
+            <span class="tag">Wärmenutzung</span>
+            <span class="tag">Direktvermarktung</span>
+            <span class="tag">Steuerungssoftware</span>
+            <span class="tag">Beratung für Energieerzeuger</span>
+            <span class="tag">KI-gestützte Energiesteuerung</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kontakt">
+      <div class="container contact-panel">
+        <div>
+          <p class="kicker">Kontakt</p>
+          <h2>Interesse an einem Austausch?</h2>
+          <p>Wir freuen uns über den Austausch mit Betreibern erneuerbarer Energieanlagen, technischen Partnern und weiteren Interessierten. Rufen Sie uns gerne direkt an oder schreiben Sie uns eine E-Mail.</p>
+          <p style="margin-top: 1rem;">
+            <strong>Christoph Burk:</strong>
+            <a href="tel:+491725250587">0172 5250587</a><br>
+            <strong>Helge Jannsen:</strong>
+            <a href="tel:+4917622834644">0176 22834644</a>
+          </p>
+        </div>
+        <a class="button button-primary" href="mailto:jb@greenhashenergy.de">E-Mail schreiben</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <p>
+          <span class="footer-title">Greenhash Energy GbR</span><br>
+          Helge Jannsen &amp; Christoph Burk<br>
+          Jens-Patent-Weg 1 &middot; 25821 Bredstedt<br>
+          Christoph: <a href="tel:+491725250587">0172 5250587</a><br>
+          Helge: <a href="tel:+4917622834644">0176 22834644</a><br>
+          <a href="mailto:jb@greenhashenergy.de">jb@greenhashenergy.de</a>
+        </p>
+      </div>
+      <div class="footer-links">
+        <p>Nordfriesland &middot; Schleswig-Holstein</p>
+
+        <details>
+          <summary>Impressum</summary>
+          <p>
+            <strong>Angaben gemäß § 5 DDG</strong><br><br>
+            Greenhash Energy GbR<br>
+            Jens-Patent-Weg 1<br>
+            25821 Bredstedt<br><br>
+            Vertreten durch die Gesellschafter:<br>
+            Helge Jannsen und Christoph Burk<br><br>
+            <strong>Kontakt</strong><br>
+            Christoph Burk: <a href="tel:+491725250587">0172 5250587</a><br>
+            Helge Jannsen: <a href="tel:+4917622834644">0176 22834644</a><br>
+            E-Mail: <a href="mailto:jb@greenhashenergy.de">jb@greenhashenergy.de</a>
+          </p>
+        </details>
+
+        <details>
+          <summary>Datenschutzerklärung</summary>
+
+          <p>
+            <strong>1. Verantwortlicher</strong><br><br>
+            Greenhash Energy GbR<br>
+            Helge Jannsen und Christoph Burk<br>
+            Jens-Patent-Weg 1<br>
+            25821 Bredstedt<br><br>
+            Christoph Burk: <a href="tel:+491725250587">0172 5250587</a><br>
+            Helge Jannsen: <a href="tel:+4917622834644">0176 22834644</a><br>
+            E-Mail: <a href="mailto:jb@greenhashenergy.de">jb@greenhashenergy.de</a>
+          </p>
+
+          <p>
+            <strong>2. Verarbeitung beim Aufruf der Website</strong><br><br>
+            Beim Aufruf dieser Website können durch den eingesetzten Hosting-Dienstleister technisch erforderliche Zugriffsdaten verarbeitet werden. Hierzu können insbesondere die IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Seite oder Datei, die zuvor besuchte Seite, der verwendete Browser, das Betriebssystem, der übertragene Datenumfang und der Zugriffsstatus gehören.
+          </p>
+
+          <p>
+            Die Verarbeitung erfolgt, um die Website technisch bereitzustellen sowie ihre Stabilität und Sicherheit zu gewährleisten. Rechtsgrundlage ist Art. 6 Abs. 1 Buchst. f DSGVO. Unser berechtigtes Interesse besteht in einem sicheren und störungsfreien Betrieb dieser Website.
+          </p>
+
+          <p>
+            Die Zugriffsdaten werden gelöscht, sobald sie für die genannten Zwecke nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten oder sicherheitsrelevanten Gründe einer Löschung entgegenstehen.
+          </p>
+
+          <p>
+            <strong>3. Hosting</strong><br><br>
+            Für die technische Bereitstellung dieser Website kann ein Hosting-Dienstleister eingesetzt werden. Dieser verarbeitet die für den Betrieb der Website erforderlichen Daten in unserem Auftrag. Soweit erforderlich, erfolgt die Verarbeitung auf Grundlage eines Vertrags zur Auftragsverarbeitung gemäß Art. 28 DSGVO.
+          </p>
+
+          <p>
+            <strong>4. Kontaktaufnahme</strong><br><br>
+            Wenn Sie uns per E-Mail oder telefonisch kontaktieren, verarbeiten wir die von Ihnen mitgeteilten Daten ausschließlich zur Bearbeitung Ihrer Anfrage und für mögliche Anschlussfragen.
+          </p>
+
+          <p>
+            Bezieht sich Ihre Anfrage auf die Anbahnung oder Durchführung eines Vertrags, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 Buchst. b DSGVO. In allen anderen Fällen beruht die Verarbeitung auf Art. 6 Abs. 1 Buchst. f DSGVO. Unser berechtigtes Interesse besteht in der sachgerechten Bearbeitung eingehender Anfragen.
+          </p>
+
+          <p>
+            Die Daten werden gelöscht, sobald Ihre Anfrage abschließend bearbeitet wurde und keine gesetzlichen Aufbewahrungspflichten oder sonstigen berechtigten Gründe für eine weitere Speicherung bestehen.
+          </p>
+
+          <p>
+            <strong>5. Cookies, Tracking und externe Inhalte</strong><br><br>
+            Diese Website setzt keine Cookies ein, verwendet keine Analyse- oder Trackingdienste und lädt keine Inhalte von externen Anbietern nach. Eine automatisierte Entscheidungsfindung oder ein Profiling findet nicht statt.
+          </p>
+
+          <p>
+            <strong>6. Empfänger personenbezogener Daten</strong><br><br>
+            Personenbezogene Daten werden nur weitergegeben, wenn dies zur technischen Bereitstellung der Website, zur Bearbeitung Ihrer Anfrage, zur Erfüllung gesetzlicher Pflichten oder zur Wahrung berechtigter Interessen erforderlich ist. Als Empfänger kommen insbesondere Hosting- und IT-Dienstleister in Betracht.
+          </p>
+
+          <p>
+            <strong>7. Ihre Rechte</strong><br><br>
+            Sie haben nach Maßgabe der gesetzlichen Voraussetzungen das Recht auf Auskunft über Ihre gespeicherten personenbezogenen Daten sowie auf Berichtigung, Löschung oder Einschränkung der Verarbeitung. Darüber hinaus können Ihnen ein Recht auf Datenübertragbarkeit und ein Widerspruchsrecht gegen Verarbeitungen auf Grundlage berechtigter Interessen zustehen.
+          </p>
+
+          <p>
+            Zur Ausübung Ihrer Rechte genügt eine Nachricht an <a href="mailto:jb@greenhashenergy.de">jb@greenhashenergy.de</a>.
+          </p>
+
+          <p>
+            <strong>8. Beschwerderecht</strong><br><br>
+            Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren. Zuständige Aufsichtsbehörde in Schleswig-Holstein ist:
+          </p>
+
+          <p>
+            Unabhängiges Landeszentrum für Datenschutz Schleswig-Holstein<br>
+            Holstenstraße 98<br>
+            24103 Kiel<br>
+            Telefon: <a href="tel:+494319881200">0431 988-1200</a><br>
+            E-Mail: <a href="mailto:mail@datenschutzzentrum.de">mail@datenschutzzentrum.de</a>
+          </p>
+
+          <p><strong>Stand: August 2026</strong></p>
+        </details>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
